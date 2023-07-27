@@ -1,0 +1,11 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "Live Preview",
+			"workspacePath": "/Users/agilemac61/Documents/demo/scroll",
+			"problemMatcher": [],
+			"label": "Live Preview: Run Server"
+		}
+	]
+}

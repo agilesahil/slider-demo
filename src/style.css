@@ -1,0 +1,188 @@
+html {
+    overflow-y: scroll;
+    height: 100%;
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+  }
+  body {
+    overflow-y: visible;
+    position: relative;
+    overflow-x: hidden;
+  }
+  html,
+  body {
+    margin: 0;
+  }
+
+
+
+  .div1 , .div2 , .div12{
+    height: 100vh;
+  }
+
+  .div1{
+    background-color: paleturquoise;
+  }
+  .div12{
+    background-color: bisque;
+  }
+  .div2{
+    background-color: grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1600px;
+    margin: 0 auto;
+  }
+
+  /* .div-box2.add p{
+    position: absolute;
+    top: 0;
+    height: 566px;
+  } */
+
+  #sequence-container .demo{
+    height: 100vh;
+    background-color: antiquewhite;
+  }
+
+  .div-box , .div-box2{
+    width: 150px;
+    height: 150px;
+    background-color: blueviolet;
+    border: 1px solid red;
+    border-radius: 20px;
+    width: 280px;
+    height: 566px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  p{
+    font-size: 30px;
+    height: 566px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .div-box2{
+    /* margin-top: 300px; */
+    background-color: yellow;
+    margin-left: 300px;
+  }
+
+  .div-box2 p{}
+
+  
+  .container {
+    width: 400vw;
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .firstContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: yellow;
+  }
+  
+  .lastContainer {
+    display: flex;
+    height: 100vh;
+    background: yellow;
+  }
+  .App{
+    width: 50%;
+    overflow: hidden;
+  }
+  .panel , .panels2 {
+    width: 100%;
+    height: 100vh;
+  }
+  .right-height{
+    height: 500px;
+    border: 1px solid #000;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+  .red {
+    background: blue;
+  }
+  .red {
+    background: red;
+  }
+  .orange {
+    background: orange;
+  }
+  .purple {
+    background: purple;
+  }
+  .blue {
+    background-color: blue;
+  }
+
+
+  /* ---- */
+
+  .sequence-panels {
+    position: absolute;
+    left: 20px;
+    right: 0;
+    top: 40px;
+    bottom: 0;
+    height: 100vh;
+}
+
+body {
+  padding-top: 40px;
+}
+
+.sequence-panel {
+    position: absolute;
+    left: 0;
+    top: calc(var(--gutter)*2);
+    bottom: auto;
+    width: 100%;
+    padding: 0 var(--gutter);
+    will-change: transform,opacity;
+}
+
+.sequence-sticky {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    color: #fff;
+}
+
+#sequence-container {
+    height: 340vh;
+    order: 2;
+    margin-bottom: 0;
+    width: 100vw;
+    margin-left: -20px;
+}
+
+
+#seq-1 {
+  opacity: 0;
+}
+
+#seq-2{
+  opacity: 0;
+}
+
+#seq-3 {
+  opacity: 0;
+}
+
+#seq-4 {
+  opacity: 0;
+} 
+  
