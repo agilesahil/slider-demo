@@ -1,88 +1,76 @@
-import { gsap } from 'gsap';
-import './style.css'
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { gsap } from "gsap";
+import "./style.css";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const a =["text1" , "text2" , "text3"]
-const b =["right1" , "right2" , "right3"]
+const a = ["text1", "text2", "text3"];
+const b = ["right1", "right2", "right3"];
 
 function App() {
 
-  const [isdata , setdata] = useState(a);
-  const [islist , setlist] = useState(b);
+  const sliderLeft = useRef();
+  const sliderRight = useRef();
+  const container = useRef();
+  const pel = useRef();
 
-  const slider = useRef();
-  const slider2 = useRef();
-  // const timeline = useMemo(() => gsap.timeline({ paused: true }), [])
-  
-  useEffect(() => {
-    const el = slider.current;
-    gsap.to( el , 
-      {
-      y:() => `-${slider.current.clientHeight}`,
-      duration:10,
-      scrollTrigger:{
-        trigger:".div-box" ,
-        markers:true,
-        start:"0 10%" ,
-        end:() => `-${slider.current.clientHeight}`,
-        scrub:1,
-        pin:".div2",
-        // pinSpacing:false,
-      }
-    } )
-  },[]);
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
 
-  useEffect(() => {
-    const el = slider2.current;
-    gsap.to( el , 
-      {
-      y:() => `-${slider2.current.clientHeight}`,
-      duration:1,
-      delay:5,
-      scrollTrigger:{
-        trigger:".div-box2" ,
-        markers:true,
-        start:"0 10%" ,
-        end:() => `-${slider2.current.clientHeight}`,
-        scrub:1,
-        pin:".div2",
-        // pinSpacing:false,
-      }
-    } )
-  },[]);
+      gsap.to(
+        [sliderLeft.current , sliderRight.current ], 
+        {
+        y: - sliderLeft.current.offsetHeight + pel.current.offsetHeight,
+        // duration:0.5,
+        scrollTrigger:{
+          trigger:container.current,
+          pin:true,
+          scrub:true,
+          pinSpacing:true,
+          snap: 0.5,
+          markers:true,
+          start:"top 98px",
+          end:"bottom 98px",
+          markers:true
+         },
+      });
 
-  // useEffect(() => {
-  //   timeline
-  //     .to(slider2.current, {
-  //       x: 5,
-  //       duration:3,
-  //     })
-  //   return () => {
-  //     timeline.kill()
-  //   }
-  // }, [timeline])
+    });
+    return () => ctx.revert();
+  });
 
   return (
     <>
-        <div className='div1'></div>
-        <div className='div12'></div>
-        <div className='div2'>
-            <div className='div-box' >
-              <p ref={slider2} >text1</p>
-              <p>text2</p>
-              <p>text3</p>
+      <div>
+        <header></header>
+        <div className="div1"></div>
+        <div className="div12"></div>
+        <div className="div2" ref={container}>
+          <div className=" phone div-box">
+            <div style={{border:"3px solid #000"}} ref={sliderLeft}>
+              <p ref={pel} className="panel" style={{ backgroundColor: "red" }}>
+                text1
+              </p>
+              <p className="panel" style={{ backgroundColor: "yellow" }}>
+                text2
+              </p>
+              <p className="panel" style={{ backgroundColor: "orange" }}>
+                text3
+              </p>
             </div>
-            <div className='div-box2'>
-              <p ref={slider} >right1</p>
-              <p>right2</p>
-              <p>right3</p>
+          </div>
+          <div className=" phone div-box2">
+            <div style={{border:"3px solid #000"}} ref={sliderRight}>
+            <p className="panel">right1</p>
+            <p className="panel">right2</p>
+            <p className="panel">right3</p>
             </div>
+          </div>
         </div>
-        <div className='div1'></div>
-        <div className='div12'></div>
+        <div className="div1"></div>
+        <div className="div12"></div>
+      </div>
     </>
   );
 }
